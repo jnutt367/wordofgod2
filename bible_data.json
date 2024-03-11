@@ -3,8 +3,9 @@
       {
         "title": "Genesis",
         "image": "images/ephesian_cards.png",
-        "description": "In the beginning, God created the Heavens and the Earth. So God created mankind in his own image, in the image of God he created them; male and female he created them."
-      },
+        "description": "In the beginning, God created the Heavens and the Earth. So God created mankind in his own image, in the image of God he created them; male and female he created them.",
+        "link": "https://mytorah.vercel.app/"
+    },
       {
         "title": "Exodus",
         "image": "images/second_samuel.png",

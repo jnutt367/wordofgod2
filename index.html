@@ -26,7 +26,9 @@ body {
     margin: 0;
     padding: 0;
 }
-
+a {
+    text-decoration: #0d0c0c;
+}
 
 
 main {
@@ -227,11 +229,14 @@ header {
     <main id="books">
         <!-- Books will be dynamically added here -->
         <!-- Example:
+
+        <a href="https://example.com">
         <div class="book-card">
             <img src="book-image.jpg" alt="Genesis">
             <h2>Genesis</h2>
             <p>The first book of the Bible.</p>
         </div>
+        </a
         -->
 
         <!--
@@ -301,29 +306,48 @@ header {
     </main>
 
     <script>
+ 
+       
         window.onload = function() {
-            fetch('bible_data.json') // Assuming the JSON file is named 'books.json'
+            const booksContainer = document.getElementById("books");
+        
+            // Fetch the JSON data
+            fetch('bible_data.json')
                 .then(response => response.json())
                 .then(data => {
-                    const booksContainer = document.getElementById("books");
+                    // Iterate over the books array in the JSON data
                     data.books.forEach(book => {
+                        // Create a link element
+                        const link = document.createElement("a");
+                        link.href = book.link; // Set the link href attribute
+        
+                        // Create the book card div
                         const bookCard = document.createElement("div");
                         bookCard.classList.add("book-card");
         
+                        // Create the image element
                         const img = document.createElement("img");
                         img.src = book.image;
                         img.alt = book.title;
-                        bookCard.appendChild(img);
         
+                        // Create the title element
                         const title = document.createElement("h2");
                         title.textContent = book.title;
-                        bookCard.appendChild(title);
         
+                        // Create the description element
                         const description = document.createElement("p");
                         description.textContent = book.description;
+        
+                        // Append elements to the book card
+                        bookCard.appendChild(img);
+                        bookCard.appendChild(title);
                         bookCard.appendChild(description);
         
-                        booksContainer.appendChild(bookCard);
+                        // Append the book card to the link
+                        link.appendChild(bookCard);
+        
+                        // Append the link to the books container
+                        booksContainer.appendChild(link);
                     });
                 })
                 .catch(error => {
